@@ -81,10 +81,10 @@ let lifeHandler = () =>{
     
 }
 
-let audioPlay = () =>{
-    let hitSound = new Audio("./assets/audios/punch-sound.mp3");
-    hitSound.volume = 0.3;
-    hitSound.currentTime = 0.32;
+let audioPlay = (soundName, volume, currentTime) =>{
+    let hitSound = new Audio(`./assets/audios/${soundName}`);
+    hitSound.volume = volume;
+    hitSound.currentTime = currentTime;
     hitSound.play();
 }
 
@@ -117,11 +117,12 @@ let AddListenerForSquare = () => {
             //Controll Ralph's position on click
             if(parseInt(square.id) === state.values.currentPosition ){
                 state.values.ralphHitcontroller = false;
-                audioPlay();
+                audioPlay("punch-sound.mp3", 0.3, 0.32);
                 MoveRalphInsertion();
                 scoreHandler(10);
             }else{
                 scoreHandler(-10);
+                audioPlay("wrong-sound.mp3", 0.3, 0.1);
             }
         });
     });
