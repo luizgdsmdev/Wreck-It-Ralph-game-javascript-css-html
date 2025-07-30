@@ -2,7 +2,7 @@ const state = {
     viwes:{
         game__boardSquare: document.querySelectorAll(".game__board-square"),
         top__scoreCounter: document.getElementById("top__score-counter"),
-        timer__timeCounter: document.getElementById("imer__time-counter"),
+        timer__timeCounter: document.getElementById("timer__time-counter"),
         lives__liveCounter: document.getElementById("lives__live-counter"),
     },
     values:{
@@ -10,9 +10,9 @@ const state = {
         lastRandomSquareId: null,
         currentPosition: null,
         totalScore: 0,
-        gameTime: 0,
+        gameTime: 59, //considering the 1s as the game starts
         gameLives: 3,
-        timeForChange: 2000,
+        timeInterval: 2000,
         ralphHitcontroller: true,
     }
 }
@@ -25,7 +25,7 @@ let MoveRalphInsertion = () => {
     //Clear setInterval on click
     intervalId !== null ? clearInterval(intervalId) : "";
     RalphInsertion();
-    intervalId = setInterval(RalphInsertion, state.values.timeForChange);
+    intervalId = setInterval(RalphInsertion, state.values.timeInterval);
 }
 
 let RandomSquareClassInsertion = () => {
@@ -69,9 +69,24 @@ let lifeHandler = () =>{
         state.viwes.lives__liveCounter.innerText = state.values.gameLives;
     }else{
         state.viwes.lives__liveCounter.innerText = '0';
-        alert("Game over");
+        
     }
     
+}
+
+let gameTimeHandler = () => {
+    setInterval(() =>{
+        if(state.values.gameTime > -1){
+            state.viwes.timer__timeCounter.innerText = state.values.gameTime;
+            state.values.gameTime -= 1;
+        }else{
+            finalGameHandler();
+        }
+    }, 1000)
+}
+
+let finalGameHandler = () => {
+
 }
 
 //Add logic on square click
@@ -97,6 +112,7 @@ let AddListenerForSquare = () => {
 function main(){
 AddListenerForSquare();
 MoveRalphInsertion();
+gameTimeHandler();
 }
 
 main();
