@@ -1,0 +1,70 @@
+.main__game-panel{
+    width: 100vw;
+    height: 90vh;
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-image: url("../images/wall.png");
+}
+
+.game__board-row-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.game__board-row{
+    width: 12rem;
+    height: 12rem;
+    background-color: #743aa9;
+    border: 1px solid #000000;
+}
+
+.game__board-focus{
+    background-color: currentColor;
+    background-image: url("../images/ralph.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    border: 1px solid #ff0000;
+}
+
+.top__lives{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.lives__live-img{
+    width: 4rem;
+}
+
+.planel__game-board{
+    width: 100%;
+}
+
+.timer__time-h3, .top__score-h3{
+    padding-bottom: 1.3rem;
+}
+
+
+@media screen and (max-width:590px) {
+    .main__game-panel {
+        align-items: flex-start;
+    }
+    .game__board-row {
+        width: 9rem;
+        height: 9rem;
+    }
+}
