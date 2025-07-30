@@ -11,6 +11,7 @@ const state = {
         currentPosition: null,
         totalScore: 0,
         gameTime: 59, //considering the 1s as the game starts
+        currentTime: setInterval(gameTimeHandler, 1000),
         gameLives: 3,
         timeInterval: 2000,
         ralphHitcontroller: true,
@@ -74,15 +75,15 @@ let lifeHandler = () =>{
     
 }
 
-let gameTimeHandler = () => {
-    setInterval(() =>{
+// Set as a standard function for hoisting function as is 
+// being called on const state at the beginning of the file 
+function gameTimeHandler () {
         if(state.values.gameTime > -1){
             state.viwes.timer__timeCounter.innerText = state.values.gameTime;
             state.values.gameTime -= 1;
         }else{
             finalGameHandler();
         }
-    }, 1000)
 }
 
 let finalGameHandler = () => {
@@ -104,15 +105,14 @@ let AddListenerForSquare = () => {
             }else{
                 scoreHandler(-10);
             }
-
         });
     });
 };
 
+
 function main(){
-AddListenerForSquare();
-MoveRalphInsertion();
-gameTimeHandler();
+    AddListenerForSquare();
+    MoveRalphInsertion();
 }
 
 main();
