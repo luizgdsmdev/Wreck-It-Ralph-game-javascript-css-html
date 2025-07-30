@@ -4,6 +4,9 @@ const state = {
         top__scoreCounter: document.getElementById("top__score-counter"),
         timer__timeCounter: document.getElementById("timer__time-counter"),
         lives__liveCounter: document.getElementById("lives__live-counter"),
+        screen__endGame: document.getElementById("screen__end-game"),
+        final__totalScore: document.getElementById("final__total-score"),
+        final__totalLive: document.getElementById("final__total-live"),
     },
     values:{
         randomSquareId: null,
@@ -11,12 +14,15 @@ const state = {
         currentPosition: null,
         totalScore: 0,
         gameTime: 59, //considering the 1s as the game starts
-        currentTime: setInterval(gameTimeHandler, 1000),
         gameLives: 3,
         timeInterval: 2000,
         ralphHitcontroller: true,
+    },
+    actions:{
+        currentTime: setInterval(gameTimeHandler, 1000),
     }
 }
+
 
 let RandomSquareForRalph = () => Math.floor(Math.random() * 9);
 let clearSquareClassFocus = () => state.viwes.game__boardSquare.forEach(square =>{ square.classList.remove("game__board-focus"); });
@@ -65,7 +71,7 @@ let scoreHandler = (points) =>{
 }
 
 let lifeHandler = () =>{
-    if(state.values.gameLives > 1){
+    if(state.values.gameLives > 0){
         state.values.gameLives -= 1;
         state.viwes.lives__liveCounter.innerText = state.values.gameLives;
     }else{
@@ -88,13 +94,17 @@ function gameTimeHandler () {
         if(state.values.gameTime > -1){
             state.viwes.timer__timeCounter.innerText = state.values.gameTime;
             state.values.gameTime -= 1;
-        }else{
             finalGameHandler();
         }
 }
 
 let finalGameHandler = () => {
-
+    if(state.values.gameLives <= 0 || state.values.gameTime === -1){ 
+        let screen__endGame = document.getElementById("screen__end-game");
+        state.viwes.final__totalScore.innerText = state.values.totalScore;
+        state.viwes.final__totalLive.innerText = state.values.gameLives <= 1 ? 0 : state.values.gameLives ;
+        screen__endGame.classList.remove("display_none"); 
+    }
 }
 
 //Add logic on square click
