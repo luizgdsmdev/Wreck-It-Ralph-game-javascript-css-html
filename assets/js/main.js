@@ -75,6 +75,13 @@ let lifeHandler = () =>{
     
 }
 
+let audioPlay = () =>{
+    let hitSound = new Audio("./assets/audios/punch-sound.mp3");
+    hitSound.volume = 0.3;
+    hitSound.currentTime = 0.32;
+    hitSound.play();
+}
+
 // Set as a standard function for hoisting function as is 
 // being called on const state at the beginning of the file 
 function gameTimeHandler () {
@@ -100,6 +107,7 @@ let AddListenerForSquare = () => {
             //Controll Ralph's position on click
             if(parseInt(square.id) === state.values.currentPosition ){
                 state.values.ralphHitcontroller = false;
+                audioPlay();
                 MoveRalphInsertion();
                 scoreHandler(10);
             }else{
