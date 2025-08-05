@@ -98,8 +98,13 @@ function gameTimeHandler () {
         }
 }
 
+let audioController = true;
 let finalGameHandler = () => {
+    
     if(state.values.gameLives <= 0 || state.values.gameTime === -1){ 
+        audioController ? audioPlay("user-won.mp3", 0.05, 0.1) : "";
+        audioController = false
+
         let screen__endGame = document.getElementById("screen__end-game");
         state.viwes.final__totalScore.innerText = state.values.totalScore;
         state.viwes.final__totalLive.innerText = state.values.gameLives <= 1 ? 0 : state.values.gameLives ;
