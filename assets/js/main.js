@@ -107,6 +107,13 @@ let finalGameHandler = () => {
     }
 }
 
+//Handles the visual score feedback for user on click
+let handlesScoreVisual = (squareHTML, vald, score) =>{
+    let Addscore = `<p class="score-manage score-add">+${score}</p>`;
+    let loseScore = `<p class="score-manage score-minus">-${score}</p>`
+    vald ? squareHTML.innerHTML = Addscore : squareHTML.innerHTML = loseScore;
+}
+
 //Add logic on square click
 let AddListenerForSquare = () => {
     state.viwes.game__boardSquare.forEach((square) => {
@@ -117,11 +124,13 @@ let AddListenerForSquare = () => {
             //Controll Ralph's position on click
             if(parseInt(square.id) === state.values.currentPosition ){
                 state.values.ralphHitcontroller = false;
+                handlesScoreVisual(square, true, 10);
                 audioPlay("punch-sound.mp3", 0.3, 0.32);
                 MoveRalphInsertion();
                 scoreHandler(10);
             }else{
                 scoreHandler(-10);
+                handlesScoreVisual(square, false, 10);
                 audioPlay("wrong-sound.mp3", 0.3, 0.1);
             }
         });
