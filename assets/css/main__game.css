@@ -78,6 +78,29 @@
     color: #ff0000;
 }
 
+.game__board-square:hover {
+  cursor: url("../images/SVGRepo_iconCarrier.svg"), auto;
+}
+
+.game__board-row-wrapper:hover {
+  cursor: url("../images/SVGRepo_iconCarrier.svg"), auto;
+}
+
+.planel__game-board:hover {
+  cursor: url("../images/SVGRepo_iconCarrier.svg"), auto;
+}
+
+.game__board-square.game__board-focus:hover{
+    cursor: url("../images/SVGRepo_iconCarrier.svg"), auto;
+}
+
+@keyframes cursorMove {
+    100%{
+        cursor: url("../images/cursor-hit.svg"), auto;
+    }
+}
+
+
 @keyframes scoreHandler {
     100%{
         opacity: 1;

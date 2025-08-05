@@ -114,12 +114,24 @@ let handlesScoreVisual = (squareHTML, vald, score) =>{
     vald ? squareHTML.innerHTML = Addscore : squareHTML.innerHTML = loseScore;
 }
 
+let handlerCursorMov = (square) => {
+    setTimeout(() => {
+        square.style.setProperty('cursor', 'url("./assets/images/cursor-hit.svg"), auto');
+    }, 5);
+
+    setTimeout(() => {
+        square.style.setProperty('cursor', 'url("./assets/images/SVGRepo_iconCarrier.svg"), auto');
+    }, 200);
+
+}
+
 //Add logic on square click
 let AddListenerForSquare = () => {
     state.viwes.game__boardSquare.forEach((square) => {
         square.addEventListener("click", (event) =>{
             event.stopImmediatePropagation();
-            
+            handlerCursorMov(square);
+
             //Add or subtract points from total score
             //Controll Ralph's position on click
             if(parseInt(square.id) === state.values.currentPosition ){
