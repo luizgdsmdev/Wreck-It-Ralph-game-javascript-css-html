@@ -32,14 +32,11 @@
     text-align: center;
 }
 
-
-
-
-@media screen and (max-width:480px) {
+@media screen and (max-width:481px) {
     .main__nav-top {
         width: 50rem;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         flex-wrap: wrap;
         align-content: stretch;
         justify-content: center;
