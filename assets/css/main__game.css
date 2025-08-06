@@ -37,11 +37,32 @@
 
 .game__board-focus{
     background-color: currentColor;
-    background-image: url("../images/ralph.png");
     background-repeat: no-repeat;
     background-position: bottom;
     border: 1px solid #ff0000;
 }
+.game__board-focus.ralph-char{
+    background-image: url("../images/char/ralph.png");
+}
+
+.game__board-focus.billie-char{
+    background-image: url("../images/char/billie-heee.png");
+    background-size: contain;
+    background-color: black;
+}
+
+.game__board-focus.charlie-char{
+    background-image: url("../images/char/charlie-sheehee.png");
+    background-size: contain;
+    background-color: black;
+}
+
+.game__board-focus.icarlee-char{
+    background-image: url("../images/char/icarlee-heee.svg");
+    background-size: contain;
+    background-color: black;
+}
+
 
 .top__lives{
     display: flex;

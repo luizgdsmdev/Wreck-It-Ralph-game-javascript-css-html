@@ -17,6 +17,9 @@ const state = {
         gameLives: 3,
         timeInterval: 2000,
         ralphHitcontroller: true,
+        charsClassList: [["ralph-char"], ["billie-char"], ["charlie-char"], ["icarlee-char"]],
+        charsClassNow: null,
+        charArrayIndex: 0,
     },
     actions:{
         currentTime: setInterval(gameTimeHandler, 1000),
@@ -25,32 +28,50 @@ const state = {
 
 
 let RandomSquareForRalph = () => Math.floor(Math.random() * 9);
-let clearSquareClassFocus = () => state.viwes.game__boardSquare.forEach(square =>{ square.classList.remove("game__board-focus"); });
+let clearSquareClassFocus = () => state.viwes.game__boardSquare.forEach(square =>{ square.classList.remove("game__board-focus", state.values.charsClassNow); });
 
 let intervalId = null;
-let MoveRalphInsertion = () => {
+let MoveCharhInsertion = () => {
     //Clear setInterval on click
     intervalId !== null ? clearInterval(intervalId) : "";
-    RalphInsertion();
-    intervalId = setInterval(RalphInsertion, state.values.timeInterval);
+    charInsertion();
+    intervalId = setInterval(charInsertion, state.values.timeInterval);
 }
 
 let RandomSquareClassInsertion = () => {
     let randomSquare = RandomSquareForRalph();
     let loopControler = randomSquare === state.values.lastRandomSquareId ? true : false;
 
-    //Make sure Ralph won't be at the same square twice in a roll
+    //Make sure won't be at the same square twice in a roll
     while (loopControler) {
         randomSquare = RandomSquareForRalph();
         loopControler = randomSquare === state.values.lastRandomSquareId ? true : false;
     }
-    state.viwes.game__boardSquare[randomSquare].classList.add("game__board-focus");
+    state.viwes.game__boardSquare[randomSquare].classList.add("game__board-focus", dealRandomChar());//Adding function to control random char insertion
     state.values.lastRandomSquareId = randomSquare;
     state.values.currentPosition = randomSquare;
 }   
 
+//Deal with classes and sound for random chars
+let dealRandomChar = () => {
+    let classList = [];
+    classList = state.values.charsClassList;
+
+    //Random selection of char
+    let classIndex = 0;
+    while(state.values.charArrayIndex == classIndex){//Make sure that the char don't repeat
+        classIndex = Math.floor(Math.random() * classList.length);
+    }
+    state.values.charArrayIndex = classIndex;//Update the index for the above control
+    state.values.charsClassNow = classList[classIndex][0];//Update the list for frontEnd control of classes
+
+
+    return classList[classIndex][0];//Return the css class to frontEnd feedback
+}
+
+
 let RalphInsertionController = true;
-let RalphInsertion = () => {
+let charInsertion = () => {
     clearSquareClassFocus();
 
     //Controlling the life cicle at each time Ralph change square
@@ -149,7 +170,7 @@ let AddListenerForSquare = () => {
                 state.values.ralphHitcontroller = false;
                 handlesScoreVisual(square, true, 10);
                 audioPlay("punch-sound.mp3", 0.3, 0.32);
-                MoveRalphInsertion();
+                MoveCharhInsertion();
                 scoreHandler(10);
             }else{
                 scoreHandler(-10);
@@ -163,7 +184,7 @@ let AddListenerForSquare = () => {
 
 function main(){
     AddListenerForSquare();
-    MoveRalphInsertion();
+    MoveCharhInsertion();
 }
 
 main();
