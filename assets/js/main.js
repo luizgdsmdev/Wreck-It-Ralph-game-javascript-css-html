@@ -17,7 +17,7 @@ const state = {
         gameLives: 3,
         timeInterval: 2000,
         ralphHitcontroller: true,
-        charsClassList: [["ralph-char"], ["billie-char"], ["charlie-char"], ["icarlee-char"]],
+        charsClassList: [["ralph-char", "punch-sound.mp3"], ["billie-char", "michael"], ["charlie-char", "michael"], ["icarlee-char", "michael"]],
         charsClassNow: null,
         charArrayIndex: 0,
     },
@@ -37,6 +37,13 @@ let MoveCharhInsertion = () => {
     charInsertion();
     intervalId = setInterval(charInsertion, state.values.timeInterval);
 }
+
+function michalRandomSound(){
+    let soundsList = ["michael-Hee-Hee.mp3","Michael-5.mp3", "Michael-7.mp3", "Michael-8.mp3", "Michael-9.mp3", ]
+
+    let soundSelect = soundsList[Math.floor(Math.random() * soundsList.length)]
+    return soundSelect
+} 
 
 let RandomSquareClassInsertion = () => {
     let randomSquare = RandomSquareForRalph();
@@ -157,6 +164,15 @@ let handlerCursorMov = (square) => {
 
 }
 
+let soundCharacterController = () => {
+    if(state.values.charsClassList[state.values.charArrayIndex][1] === "michael"){
+        return michalRandomSound();
+    }else{
+        return state.values.charsClassList[state.values.charArrayIndex][1]
+    }
+}
+
+
 //Add logic on square click
 let AddListenerForSquare = () => {
     state.viwes.game__boardSquare.forEach((square) => {
@@ -169,7 +185,8 @@ let AddListenerForSquare = () => {
             if(parseInt(square.id) === state.values.currentPosition ){
                 state.values.ralphHitcontroller = false;
                 handlesScoreVisual(square, true, 10);
-                audioPlay("punch-sound.mp3", 0.3, 0.32);
+
+                audioPlay(soundCharacterController(), 0.3, 0.32);
                 MoveCharhInsertion();
                 scoreHandler(10);
             }else{
