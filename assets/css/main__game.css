@@ -117,4 +117,7 @@
         width: 9rem;
         height: 9rem;
     }
+    .game__board-square{
+        height: 10rem;
+    }
 }
