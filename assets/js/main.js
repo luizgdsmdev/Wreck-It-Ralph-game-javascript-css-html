@@ -100,9 +100,15 @@ function gameTimeHandler () {
 
 let audioController = true;
 let finalGameHandler = () => {
+
+    //Dfine if the sound that will play on final screen (won or lose)
+    let WonOrLoseSound = () =>{
+        return state.values.gameLives <= 0 ? audioPlay("lose-sound.mp3", 0.5, 0.1) : audioPlay("user-won.mp3", 0.3, 0.1);
+    }
     
     if(state.values.gameLives <= 0 || state.values.gameTime === -1){ 
-        audioController ? audioPlay("user-won.mp3", 0.05, 0.1) : "";
+        audioController ? WonOrLoseSound() : "";//Play the sound on browser
+        
         audioController = false
 
         let screen__endGame = document.getElementById("screen__end-game");
