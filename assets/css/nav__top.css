@@ -24,7 +24,7 @@
 }
 
 .nav__top-timer, .nav__top-score, .nav__top-lives{
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .top__timer, .top__score, .top__lives{
@@ -44,3 +44,10 @@
         padding: 1rem;
     }
 }
+
+@media screen and (max-width:375px) {
+    .nav__top-timer, .nav__top-score, .nav__top-lives{
+        padding: 0.3rem;
+    }    
+}
+
