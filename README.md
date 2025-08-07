@@ -1,6 +1,6 @@
 # Wreck-It-Ralph Game
 
-A browser-based game inspired by the movie *Wreck-It Ralph*, built using HTML, CSS, and JavaScript.
+A browser-based game inspired by the movie *Wreck-It Ralph* that includes memes, built using HTML, CSS, and JavaScript.
 
 *live link*: https://luizgdsmdev.github.io/Wreck-It-Ralph-game-javascript-css-html/
 
@@ -10,7 +10,7 @@ This project is a simple yet engaging web game that recreates the arcade spirit 
 
 The project remains under constant development.
 
-*Last updated*: July 30, 2025.
+*Last updated*: Aug 07, 2025.
 
 ## Technologies Used
 
