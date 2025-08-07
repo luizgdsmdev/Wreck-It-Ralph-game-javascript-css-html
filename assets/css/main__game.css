@@ -45,22 +45,51 @@
     background-image: url("../images/char/ralph.png");
 }
 
-.game__board-focus.billie-char{
-    background-image: url("../images/char/billie-heee.png");
+.game__board-focus.billie-char, .game__board-focus.charlie-char, .game__board-focus.icarlee-char
+.game__board-focus.ever-dream, .game__board-focus.hehe-boy, .game__board-focus.okay-meme, .game__board-focus.risitas, 
+.game__board-focus.what-wtf, .game__board-focus.why-running, .game__board-focus.why-running-1{
     background-size: contain;
     background-color: black;
 }
 
+.why-running-1{
+    background-image: url("../images/char/why-running-1.svg");
+}
+
+.why-running{
+    background-image: url("../images/char/why-running.svg");
+}
+
+.what-wtf{
+    background-image: url("../images/char/what-wtf.svg");
+}
+
+.risitas{
+    background-image: url("../images/char/risitas.svg");
+}
+
+.okay-meme{
+    background-image: url("../images/char/okay-meme.svg");
+}
+
+.hehe-boy{
+    background-image: url("../images/char/hehe-boy.svg");
+}
+
+.game__board-focus.billie-char{
+    background-image: url("../images/char/billie-heee.svg");
+}
+
+.ever-dream{
+    background-image: url("../images/char/ever-dream.svg");
+}
+
 .game__board-focus.charlie-char{
-    background-image: url("../images/char/charlie-sheehee.png");
-    background-size: contain;
-    background-color: black;
+    background-image: url("../images/char/charlie-sheehee.svg");
 }
 
 .game__board-focus.icarlee-char{
     background-image: url("../images/char/icarlee-heee.svg");
-    background-size: contain;
-    background-color: black;
 }
 
 

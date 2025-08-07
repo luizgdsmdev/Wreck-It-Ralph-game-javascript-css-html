@@ -17,7 +17,12 @@ const state = {
         gameLives: 3,
         timeInterval: 2000,
         ralphHitcontroller: true,
-        charsClassList: [["ralph-char", "punch-sound.mp3"], ["billie-char", "michael"], ["charlie-char", "michael"], ["icarlee-char", "michael"]],
+        charsClassList: [
+            ["ralph-char", "punch-sound.mp3"], ["billie-char", "michael"], ["charlie-char", "michael"], 
+            ["icarlee-char", "michael"], ["ever-dream", "ever-dream.mp3"], ["hehe-boy", "hehe-boy.mp3"],
+            ["okay-meme", "okay-meme.mp3"], ["risitas", "risitas.mp3"], ["what-wtf", "what-wtf.mp3"],
+            ["why-running", "why-running.mp3"], ["why-running-1", "why-running-1.mp3"],
+        ],
         charsClassNow: null,
         charArrayIndex: 0,
     },
