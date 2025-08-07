@@ -18,10 +18,10 @@ const state = {
         timeInterval: 2000,
         ralphHitcontroller: true,
         charsClassList: [
-            ["ralph-char", "punch-sound.mp3"], ["billie-char", "michael"], ["charlie-char", "michael"], 
-            ["icarlee-char", "michael"], ["ever-dream", "ever-dream.mp3"], ["hehe-boy", "hehe-boy.mp3"],
-            ["okay-meme", "okay-meme.mp3"], ["risitas", "risitas.mp3"], ["what-wtf", "what-wtf.mp3"],
-            ["why-running", "why-running.mp3"], ["why-running-1", "why-running-1.mp3"],
+            ["ralph-char", "punch-sound.mp3", 0.3, 0.1], ["billie-char", "michael", 0.01, 0.1], ["charlie-char", "michael", 0.01, 0.1], 
+            ["icarlee-char", "michael"], ["ever-dream", "ever-dream.mp3", 0.01, 0.6], ["hehe-boy", "hehe-boy.mp3", 0.01, 0.6],
+            ["okay-meme", "okay-meme.mp3", 0.01, 0.6], ["risitas", "risitas.mp3", 0.01, 0.3], ["what-wtf", "what-wtf.mp3", 0.01, 0.4],
+            ["why-running", "why-running.mp3", 0.01, 0.3], ["why-running-1", "why-running-1.mp3", 0.01, 0.4],
         ],
         charsClassNow: null,
         charArrayIndex: 0,
@@ -136,7 +136,7 @@ let finalGameHandler = () => {
 
     //Dfine if the sound that will play on final screen (won or lose)
     let WonOrLoseSound = () =>{
-        return state.values.gameLives <= 0 ? audioPlay("lose-sound.mp3", 0.5, 0.1) : audioPlay("user-won.mp3", 0.3, 0.1);
+        return state.values.gameLives <= 0 ? audioPlay("lose-sound.mp3", 0.1, 0.1) : audioPlay("user-won.mp3", 0.3, 0.1);
     }
     
     if(state.values.gameLives <= 0 || state.values.gameTime === -1){ 
@@ -171,9 +171,13 @@ let handlerCursorMov = (square) => {
 
 let soundCharacterController = () => {
     if(state.values.charsClassList[state.values.charArrayIndex][1] === "michael"){
-        return michalRandomSound();
+        return [michalRandomSound(), 0.3, 0.1]
     }else{
-        return state.values.charsClassList[state.values.charArrayIndex][1]
+        let audioName = state.values.charsClassList[state.values.charArrayIndex][1];
+        let audioPlayStart = state.values.charsClassList[state.values.charArrayIndex][2];
+        let audioVolume = state.values.charsClassList[state.values.charArrayIndex][3];
+        
+        return [audioName, audioVolume, audioPlayStart]
     }
 }
 
@@ -190,14 +194,15 @@ let AddListenerForSquare = () => {
             if(parseInt(square.id) === state.values.currentPosition ){
                 state.values.ralphHitcontroller = false;
                 handlesScoreVisual(square, true, 10);
-
-                audioPlay(soundCharacterController(), 0.3, 0.32);
+                
+                let [audioName, audioVolume, audioStart] = soundCharacterController();
+                audioPlay(audioName, audioVolume, audioStart);
                 MoveCharhInsertion();
                 scoreHandler(10);
             }else{
                 scoreHandler(-10);
                 handlesScoreVisual(square, false, 10);
-                audioPlay("wrong-sound.mp3", 0.3, 0.1);
+                audioPlay("wrong-sound.mp3", 0.1, 0.1);
             }
         });
     });
