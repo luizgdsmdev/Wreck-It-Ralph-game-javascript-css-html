@@ -47,9 +47,34 @@
 
 .game__board-focus.billie-char, .game__board-focus.charlie-char, .game__board-focus.icarlee-char
 .game__board-focus.ever-dream, .game__board-focus.hehe-boy, .game__board-focus.okay-meme, .game__board-focus.risitas, 
-.game__board-focus.what-wtf, .game__board-focus.why-running, .game__board-focus.why-running-1{
+.game__board-focus.what-wtf, .game__board-focus.why-running, .game__board-focus.why-running-1, .game__board-focus.are-you-serious,
+.game__board-focus.click-nice, .game__board-focus.m-scott-no, .game__board-focus.nani, .game__board-focus.omg-uau, .game__board-focus.zach-g{
     background-size: contain;
     background-color: black;
+}
+
+.zach-g{
+    background-image: url("../images/char/zach-g.svg");
+}
+
+.omg-uau{
+    background-image: url("../images/char/omg-uau.svg");
+}
+
+.nani{
+    background-image: url("../images/char/nani.svg");
+}
+
+.m-scott-no{
+    background-image: url("../images/char/m-scott-no.svg");
+}
+
+.click-nice{
+    background-image: url("../images/char/click-nice.svg");
+}
+
+.are-you-serious{
+    background-image: url("../images/char/are-you-serious.svg");
 }
 
 .why-running-1{
